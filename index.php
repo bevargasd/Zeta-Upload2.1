@@ -1,31 +1,50 @@
-<?php
-require_once './inc/page.php';
-
-$page = new Page("index",false);
-
-if ($page->settings->simple_urls && count($_GET) !== 0) {
-    $target = $page->get_requested_page();
-
-    if ($target !== "index" && strlen($target) <= 16 && preg_match("/^[a-z]+$/", $target)) {
-        $local_script = "./${target}.php";
-        if (file_exists($local_script)) {
-            require_once $local_script;
-            return;
-        }
-    }
-}
-$page->header->print_header();
-
-$page->print_title();
-?>
-<br>
-<div class="container">
-    <div class="jumbotron">
-        <div class="litebans-index litebans-index-main">
-            <h2><?php echo str_replace("{server}", $page->settings->name, $page->t("index.welcome.main")); ?></h2>
-        </div>
-
-        <div class="litebans-index litebans-index-sub"><p><?php echo $page->t("index.welcome.sub"); ?></p></div>
-    </div>
-</div>
-<?php $page->print_footer(false); ?>
+<?php include('includes/header.php'); ?>
+	<body>
+		<video playsinline autoplay muted loop id="bgvid">
+ 			 <source src="images/background.mp4" type="video/webm">
+		</video>
+		<?php include('includes/announcements.php'); ?>
+		<div id="wrap">
+			<div class="header">
+				<div class="title">
+					<img src="<?php echo $config['theme']['logo'] ?>"></img>
+				</div>
+			</div>
+			<div class="info">
+				<div>
+					<h2><i class="fas fa-users"></i>
+					<span><?php
+                            	echo $ping['players']['online'];
+                            ?>
+					</span>Players Online</h2>
+					<p>what are you waiting for?</p>
+				</div>
+				<div>
+					<h2><i class="far fa-question-circle"></i> Server Information</h2>
+					<p id="content-1">
+						Status: <span>
+							<?php
+								if ($ping) echo 'Online';
+                            	else echo 'Offline';
+							?>
+						</span>
+					</p>
+					<p id="content-2">
+						Version: <span>
+							<?php
+								echo $ping['version']['name'];
+							?>		
+						</span>
+					</p>
+				</div>
+				<div>
+					<button id="copy" data-hover="Click to Copy IP" data-active="active" data-clipboard-text="<?php echo $config['server']['ip']?>" type="button">
+					<span><?php echo $config['server']['ip']?></span></button>
+				</div>
+			</div>
+			<?php include'includes/menu.php'?>
+			<?php include'includes/footer.php'?>
+		</div>
+		<script type="text/javascript" src="javascript/functions.js"></script>
+	</body>
+</html>

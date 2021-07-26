@@ -1,0 +1,68 @@
+
+/* KEYFRAMES		*/
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+  30%, 50%, 70% {
+    transform: translate3d(-3px, 0, 0);
+  }
+  40%, 60% {
+    transform: translate3d(3px, 0, 0);
+  }
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+/* MENU HOVER EFFECTS & ANIMATIONS		*/
+.menu a {
+  -webkit-transition: all 0.4s ease;
+  -moz-transition: all 0.4s ease;
+  -ms-transition: all 0.4s ease;
+  -o-transition: 0.4s ease;
+  transition: 0.4s ease;
+}
+.menu a:hover {
+  -webkit-animation: pulse 0.5s linear infinite;
+  -moz-animation: pulse 0.5s linear infinite;
+  -o-animation: pulse 0.5s linear infinite;
+  -ms-animation: pulse 0.5s linear infinite;
+  animation: pulse 0.5s linear infinite;
+}
+.menu a:hover:nth-child(1) {
+  color: #39CCCC;
+}
+.menu a:hover:nth-child(2) {
+  color: #01FF70;
+}
+.menu a:hover:nth-child(3) {
+  color: #FFDC00;
+}
+.menu a:hover:nth-child(4) {
+  color: #FF4136;
+}
+.menu a:hover:nth-child(5) {
+  color: #0074D9;
+}
+
+/* FOOTER HOVER EFFECTS.		*/
+.footer a:hover {
+  -webkit-animation: shake 1.3s linear infinite;
+  -moz-animation: shake 1.3s linear infinite;
+  -o-animation: shake 1.3s linear infinite;
+  -ms-animation: shake 1.3s linear infinite;
+  animation: shake 1.3s linear infinite;
+}
+
+/*# sourceMappingURL=animations.css.map */
